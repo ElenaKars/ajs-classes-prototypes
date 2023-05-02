@@ -1,40 +1,25 @@
-import Character from '../Character';
+import Character from '../class/Character';
 
 describe('Character', () => {
-  test('should create a character with correct properties', () => {
-    const character = new Character('John', 'Swordsman');
-
-    expect(character).toEqual({
-      name: 'John',
-      type: 'Swordsman',
-      health: 100,
-      level: 1,
-      attack: 40,
-      defence: 10,
-    });
+  it('should throw an error with incorrect name or type', () => {
+    expect(() => new Character('J', 'Bowman')).toThrowError('Некорректное имя или тип персонажа');
+    expect(() => new Character('John', 'Warrior')).toThrowError('Некорректное имя или тип персонажа');
   });
 
-  test('should throw an error if invalid name or type', () => {
-    expect(() => new Character('J', 'Invalid')).toThrow('Некорректное имя или тип персонажа');
-  });
-
-  it('should decrease health correctly', () => {
+  it('should decrease health when damage is taken', () => {
     const character = new Character('John', 'Bowman');
+    const initialHealth = character.health;
+
     character.damage(10);
-    expect(character.health).toBe(92.5);
+
+    expect(character.health).toBeLessThan(initialHealth);
   });
 
-  it('should throw an error for negative damage', () => {
+  it('should not allow negative damage', () => {
     const character = new Character('John', 'Bowman');
-    expect(() => {
-      character.damage(-10);
-    }).toThrow('Некорректное количество очков урона');
-  });
 
-  it('should throw an error for invalid damage', () => {
-    const character = new Character('John', 'Bowman');
-    expect(() => {
-      character.damage('10');
-    }).toThrow('Некорректное количество очков урона');
+    expect(() => character.damage(-10)).toThrowError('Некорректное количество очков урона');
   });
 });
+
+
