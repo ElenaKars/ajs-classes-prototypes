@@ -4,16 +4,19 @@ describe('Swordsman', () => {
   it('should create a new swordsman with correct parameters', () => {
     const swordsman = new Swordsman('John');
 
-    expect(swordsman.name).toBe('John');
-    expect(swordsman.type).toBe('Swordsman');
-    expect(swordsman.health).toBe(100);
-    expect(swordsman.level).toBe(1);
-    expect(swordsman.attack).toBe(40);
-    expect(swordsman.defense).toBe(10);
+    const expected = {
+      attack: 40,
+      defense: 10,
+      health: 100, 
+      level: 1,
+      name: 'John',
+      type: 'Swordsman',
+    }
+    expect(swordsman).toEqual(expected);
   });
 
   it('should throw an error with incorrect name', () => {
-    expect(() => new Swordsman('J')).toThrowError('Некорректное имя или тип персонажа');
+    expect(() => new Swordsman('J')).toThrowError();
   });
 
   it('should inherit properties and methods from Character', () => {

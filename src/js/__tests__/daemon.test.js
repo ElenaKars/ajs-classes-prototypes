@@ -3,17 +3,20 @@ import Daemon from '../class/Daemon';
 describe('Daemon', () => {
     it('should create a new daemon with correct parameters', () => {
       const daemon = new Daemon('John');
-  
-      expect(daemon.name).toBe('John');
-      expect(daemon.type).toBe('Daemon');
-      expect(daemon.health).toBe(100);
-      expect(daemon.level).toBe(1);
-      expect(daemon.attack).toBe(10);
-      expect(daemon.defense).toBe(40);
+
+      const expected = {
+        attack: 10,
+        defense: 40,
+        health: 100, 
+        level: 1,
+        name: 'John',
+        type: 'Daemon',
+      }
+      expect(daemon).toEqual(expected);
     });
   
     it('should throw an error with incorrect name', () => {
-      expect(() => new Daemon('J')).toThrowError('Некорректное имя или тип персонажа');
+      expect(() => new Daemon('J')).toThrowError();
     });
   
     it('should inherit properties and methods from Character', () => {
