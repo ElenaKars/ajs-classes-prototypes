@@ -7,11 +7,11 @@ describe('Magician', () => {
     const expected = {
       attack: 10,
       defense: 40,
-      health: 100, 
+      health: 100,
       level: 1,
       name: 'John',
       type: 'Magician',
-    }
+    };
     expect(magician).toEqual(expected);
   });
 

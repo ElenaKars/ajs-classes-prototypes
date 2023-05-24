@@ -9,11 +9,11 @@ describe('Character', () => {
     it('should throw an error with incorrect type of name', () => {
       expect(() => new Character(10, 'Bowman')).toThrowError();
     });
-  
+
     it('should throw an error with incorrect type', () => {
       expect(() => new Character('John', 'Warrior')).toThrowError();
     });
-  })
+  });
 
   describe('levelUp', () => {
     it('should increase level by 1', () => {
@@ -53,7 +53,7 @@ describe('Character', () => {
       expect(() => character.levelUp()).toThrowError();
     });
   });
-  
+
   describe('damage', () => {
     it('should throw an error if the damage points is not a number', () => {
       const character = new Character('Test', 'Swordsman');
@@ -79,4 +79,4 @@ describe('Character', () => {
       expect(character.health).toEqual(0);
     });
   });
-})
+});

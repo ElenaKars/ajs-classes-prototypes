@@ -7,11 +7,11 @@ describe('Undead', () => {
     const expected = {
       attack: 25,
       defense: 25,
-      health: 100, 
+      health: 100,
       level: 1,
       name: 'John',
       type: 'Undead',
-    }
+    };
 
     expect(undead).toEqual(expected);
   });
